@@ -62,12 +62,14 @@ vision_state.json
 - Microphone input for `arecord`.
 - USB headset or Bluetooth headset for audio output.
 - GPIO button connected to `/dev/gpiochip0` line `2`.
+- 12V to 5V Voltage Regulator Module.
 
 - NXP FRDM-IMX93 开发板。
 - 双目摄像头，默认使用 `/dev/video2`。
 - 麦克风录音输入。
 - USB 耳机或蓝牙耳机音频输出。
 - GPIO 按键，默认使用 `/dev/gpiochip0` 的 line `2`。
+- 12V降5V稳压模块。
 
 ## External Assets / 外部文件
 
@@ -253,7 +255,7 @@ If the board uses a serial console instead of `/dev/tty1`, edit `TTYPath` in the
 
 - 项目名称：Blind-assistance / 视界无界
 - 项目归属：苏州大学 视界无界
-- 团队成员：提交前填写最终成员名单。
+- 团队成员：张睿、殷安豪、黄家豪
 
 ## License / 开源协议
 
