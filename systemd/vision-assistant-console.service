@@ -1,0 +1,22 @@
+[Unit]
+Description=Blind-assistance vision assistant on console
+After=multi-user.target bluetooth.service
+Wants=bluetooth.service
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Blind-assistance
+ExecStart=/usr/local/bin/start-vision-assistant.sh
+StandardInput=tty
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

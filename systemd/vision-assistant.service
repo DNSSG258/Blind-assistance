@@ -1,0 +1,17 @@
+[Unit]
+Description=Blind-assistance vision assistant auto start
+After=multi-user.target bluetooth.service
+Wants=bluetooth.service
+
+[Service]
+Type=simple
+User=root
+ExecStartPre=/bin/sleep 8
+ExecStart=/usr/local/bin/start-vision-assistant.sh
+Restart=always
+RestartSec=5
+KillMode=control-group
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target
