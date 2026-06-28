@@ -217,6 +217,34 @@ HEADSET_MAC="AA:BB:CC:DD:EE:FF"
 
 with the target Bluetooth headset MAC address.
 
+### Bluetooth Headset GUI / 蓝牙耳机设置界面
+
+`bluetooth_headset_gui.py` provides a fullscreen GTK helper for selecting a Bluetooth
+headset on the board. The startup script opens this GUI when the automatic Bluetooth
+headset connection fails or when the setup marker exists at
+`/tmp/vision-assistant-bt-setup-required`.
+
+bluetooth_headset_gui.py 提供了一个全屏的 GTK 辅助工具，用于在开发板上选择蓝牙耳机。当自动连接蓝牙耳机失败，或者存在设置标记文件 /tmp/vision-assistant-bt-setup-required 时，启动脚本会打开该 GUI。
+
+The GUI initializes the Bluetooth controller, scans nearby devices, lets the user select
+a headset, pairs and trusts the selected device, updates `HEADSET_MAC` and
+`HEADSET_MAC_UNDERSCORE` in `/usr/local/bin/bt-headset-autoconnect.sh`, then runs that
+autoconnect script again. After a successful connection, the GUI closes automatically.
+
+该 GUI 会初始化蓝牙控制器、扫描附近的设备，让用户选择一款耳机，然后对所选设备进行配对和信任操作，并更新 /usr/local/bin/bt-headset-autoconnect.sh 中的 HEADSET_MAC 和 HEADSET_MAC_UNDERSCORE 变量，随后再次运行该自动连接脚本。连接成功后，GUI 会自动关闭。
+
+Run it manually with:
+手动运行它，使用：
+
+```bash
+python3 bluetooth_headset_gui.py \
+  --autoconnect-script /usr/local/bin/bt-headset-autoconnect.sh
+```
+
+Use `--windowed` when testing from a desktop session and a fullscreen window is not
+needed.
+在桌面会话中测试且不需要全屏窗口时，请使用 --windowed 选项。
+
 ## Systemd Autostart / 开机自启
 
 Background service:
